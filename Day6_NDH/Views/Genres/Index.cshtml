@@ -1,0 +1,8 @@
+@model IEnumerable<Genre>
+@{ ViewData["Title"] = "Quản lý thể loại"; }
+<div class="d-flex justify-content-between align-items-center mb-3"><h1>Quản lý thể loại</h1><a asp-action="Create" class="btn btn-primary">Thêm thể loại</a></div>
+@if (TempData["Error"] is not null) { <div class="alert alert-danger">@TempData["Error"]</div> }
+<table class="table table-striped table-hover"><thead><tr><th>Tên thể loại</th><th>Số phim</th><th class="text-end">Thao tác</th></tr></thead><tbody>
+@foreach (var genre in Model) { <tr><td>@genre.Name</td><td>@genre.Movies.Count</td><td class="text-end"><a asp-action="Edit" asp-route-id="@genre.Id" class="btn btn-sm btn-warning">Sửa</a> <a asp-action="Delete" asp-route-id="@genre.Id" class="btn btn-sm btn-danger">Xóa</a></td></tr> }
+</tbody></table>
+<a asp-controller="Movies" asp-action="Index" class="btn btn-outline-secondary">Danh sách phim</a>

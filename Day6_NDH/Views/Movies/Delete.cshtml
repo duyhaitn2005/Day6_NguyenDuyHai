@@ -1,0 +1,5 @@
+@model Movie
+@{ ViewData["Title"] = "Xóa phim"; }
+<h1>Xóa phim</h1><div class="alert alert-warning">Bạn có chắc muốn xóa phim này không?</div>
+<dl class="row"><dt class="col-sm-3">Tên phim</dt><dd class="col-sm-9">@Model.Title</dd><dt class="col-sm-3">Ngày phát hành</dt><dd class="col-sm-9">@Model.ReleaseDate.ToString("dd/MM/yyyy")</dd><dt class="col-sm-3">Thể loại</dt><dd class="col-sm-9">@Model.Genre?.Name</dd></dl>
+<form asp-action="Delete"><input type="hidden" asp-for="Id" /><button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa phim này không?');">Xóa</button> <a asp-action="Index" class="btn btn-secondary">Quay lại</a></form>
